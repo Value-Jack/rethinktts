@@ -144,10 +144,6 @@ p {
   border: 1px solid var(--line);
 }
 
-.case-id-col {
-  width: 10%;
-}
-
 .face-col {
   width: 10%;
 }
