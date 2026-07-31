@@ -277,7 +277,7 @@
         "groups": [
           {
             "key": "style",
-            "title": "Style Content",
+            "title": "Instruction Content",
             "methods": [
               {
                 "key": "controlspeech_promptstyle",
@@ -321,7 +321,7 @@
         "groups": [
           {
             "key": "style",
-            "title": "Style Content",
+            "title": "Instruction Content",
             "methods": [
               {
                 "key": "controlspeech_promptstyle",
@@ -365,7 +365,7 @@
         "groups": [
           {
             "key": "style",
-            "title": "Style Content",
+            "title": "Instruction Content",
             "methods": [
               {
                 "key": "controlspeech_promptstyle",
@@ -409,7 +409,7 @@
         "groups": [
           {
             "key": "style",
-            "title": "Style Content",
+            "title": "Instruction Content",
             "methods": [
               {
                 "key": "controlspeech_promptstyle",
@@ -453,7 +453,7 @@
         "groups": [
           {
             "key": "style",
-            "title": "Style Content",
+            "title": "Instruction Content",
             "methods": [
               {
                 "key": "controlspeech_promptstyle",
@@ -497,7 +497,7 @@
         "groups": [
           {
             "key": "style",
-            "title": "Style Content",
+            "title": "Instruction Content",
             "methods": [
               {
                 "key": "controlspeech_promptstyle",
@@ -541,7 +541,7 @@
         "groups": [
           {
             "key": "style",
-            "title": "Style Content",
+            "title": "Instruction Content",
             "methods": [
               {
                 "key": "controlspeech_promptstyle",
@@ -585,7 +585,7 @@
         "groups": [
           {
             "key": "style",
-            "title": "Style Content",
+            "title": "Instruction Content",
             "methods": [
               {
                 "key": "controlspeech_promptstyle",
@@ -631,7 +631,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -657,7 +657,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -683,7 +683,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -709,7 +709,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -735,7 +735,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -761,7 +761,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -787,7 +787,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -813,7 +813,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -839,7 +839,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -865,7 +865,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -891,7 +891,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -917,7 +917,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",
@@ -943,7 +943,7 @@
         "groups": [
           {
             "key": "joint",
-            "title": "Face Style Content",
+            "title": "Face Instruction Content",
             "methods": [
               {
                 "key": "icme_face_style",

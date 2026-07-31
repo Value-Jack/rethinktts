@@ -168,10 +168,6 @@ p {
   width: 14%;
 }
 
-.ours-cell {
-  background: var(--accent-soft);
-}
-
 audio {
   width: 100%;
   max-width: 232px;
