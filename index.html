@@ -1,39 +1,59 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Unified Face and Style TTS Demo</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header class="container page-header">
     <div class="text-center">
       <h1>Rethinking FaceTTS and StyleTTS</h1>
-      <h2>A Unified TTS Framework for Complementary Speaker Timbre and Style Control</h2>
+      <h2>A Unified TTS Framework for Comprehensive Speaker Timbre and Style Control</h2>
     </div>
   </header>
 
   <main>
     <section id="abstract" class="hero is-small">
       <div class="hero-body">
-      <div class="container">
-      <h2 class="title is-3">Abstract</h2>
-      <p>FaceTTS and StyleTTS provide complementary forms of control. Face images contain instance-level speaker cues and are therefore more suitable for generating distinctive speaker timbres, whereas style descriptions specify dynamic attributes such as emotion, pitch, energy, and speed. However, each paradigm mainly focuses on one aspect of speech generation and provides limited control over the other. Directly combining the two conditions may also introduce interference due to their overlapping attributes.</p>
-      <p>To address this issue, we develop a unified multimodal TTS framework for face-only, style-only, and joint face-style speech generation. We first construct aligned face-style-speech training data through an automatic data construction pipeline. We then introduce a multimodal gated fusion module that adaptively controls the contribution of face information in the joint representation, enabling speaker-timbre preservation while maintaining style controllability. Furthermore, we propose Joint Content-Style Reward Optimization (JCSRO), which improves multidimensional style control while preserving linguistic content. Experimental results demonstrate that our framework achieves effective control over both speaker timbre and speaking style.</p>
-      </div>
+        <div class="container">
+          <h2 class="title is-3">Abstract</h2>
+          <p>Recent advances in zero-shot TTS enable speech synthesis for unseen speakers from short reference
+            recordings. However, reference speech may not always be available, motivating controllable TTS from
+            non-speech conditions. Existing approaches typically rely on either face images for speaker timbre modeling
+            or style instructions for attribute and style control. These conditions differ in their granularity and
+            control mechanism: faces provide implicit instance-level timbre cues, whereas instructions provide explicit
+            attribute-level timbre constraints and dynamic style control. Jointly modeling them remains challenging due
+            to the lack of aligned face-instruction-speech data and their heterogeneous information.
+
+
+            To address these issues, we propose a unified multimodal TTS framework that supports face-only,
+            instruction-only, and joint face- and instruction-conditioned speech generation. We first develop an
+            automatic data construction pipeline and construct \dataset, an aligned dataset of face images, style
+            instructions, and speech. We then introduce a multimodal gated fusion module that adaptively coordinates the
+            relative contributions of face and instruction conditions, enabling a better balance between speaker-timbre
+            preservation and speaking-style control. Furthermore, we propose Joint Content-Style Reward Optimization
+            (JCSRO), which jointly incorporates content and style rewards to improve speaking expressiveness while
+            preserving linguistic content. Experimental results demonstrate that the proposed framework achieves
+            competitive performance across face-only, instruction-only, and joint conditioning, while providing
+            effective control over speaker timbre and speaking style.</p>
+        </div>
       </div>
     </section>
 
     <section id="method" class="hero is-small">
       <div class="hero-body">
-      <div class="container">
-      <h2 class="title is-3">Pipeline</h2>
-      <div class="pipeline-wrap">
-        <img class="pipeline" src="assets/docs/pipeline.png" alt="Pipeline overview">
-      </div>
-      <p class="caption">Overview of the unified multimodal TTS framework with face-only, style-only, and joint face-style conditioned generation.</p>
-      </div>
+        <div class="container">
+          <h2 class="title is-3">Pipeline</h2>
+          <div class="pipeline-wrap">
+            <img class="pipeline" src="assets/docs/pipeline.png" alt="Pipeline overview">
+          </div>
+          <p class="caption">Overview of the unified multimodal TTS framework with face-only, style-only, and joint
+            face-style conditioned generation.</p>
+        </div>
       </div>
     </section>
 
@@ -45,12 +65,13 @@
       </div>
     </section>
 
-    
+
     <section class="hero is-small sample-section" id="only-face">
       <div class="hero-body">
         <div class="container">
           <h2 class="title is-3">1. Only Face</h2>
-          <p>Speech is generated from the face condition and text content. The table compares FaceTTS, FVTTS, SYNTHE-SEES, and our face-only model.</p>
+          <p>Speech is generated from the face condition and text content. The table compares FaceTTS, FVTTS,
+            SYNTHE-SEES, and our face-only model.</p>
           <div class="container table-container">
             <table class="table table-hover pt-2">
               <colgroup>
@@ -72,257 +93,290 @@
                 </tr>
               </thead>
               <tbody>
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0001_5hvVjOqk_4o_00_00_03_21.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">and how your tone shapes the rest of your communication.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0001_5hvVjOqk_4o_00_00_03_21__facetts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0001_5hvVjOqk_4o_00_00_03_21__fvtts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0001_5hvVjOqk_4o_00_00_03_21__synthsees.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0001_5hvVjOqk_4o_00_00_03_21__ours_face.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0001_5hvVjOqk_4o_00_00_03_21.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">and how your tone shapes the rest of your
+                    communication.</td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0002_9pGlJfEQBw8_00_00_00_00.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">Welcome back to my channel. In today&#x27;s video, I&#x27;ll be touching on two traumas and core wounds that.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0002_9pGlJfEQBw8_00_00_00_00__facetts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0002_9pGlJfEQBw8_00_00_00_00__fvtts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0002_9pGlJfEQBw8_00_00_00_00__synthsees.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0002_9pGlJfEQBw8_00_00_00_00__ours_face.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0001_5hvVjOqk_4o_00_00_03_21__facetts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0003_AEEDUcUNjzc_00_03_32_21.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">wrapping up things on my corporate job, post maternity leave, I quit. My dream life officially.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0003_AEEDUcUNjzc_00_03_32_21__facetts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0003_AEEDUcUNjzc_00_03_32_21__fvtts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0003_AEEDUcUNjzc_00_03_32_21__synthsees.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0003_AEEDUcUNjzc_00_03_32_21__ours_face.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/hard_0002_156TiAmjW1A_00_04_45_94.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">could say, we stan Harry Styles. That means we love him. We&#x27;re a fan of his. To bail.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0002_156TiAmjW1A_00_04_45_94__facetts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0002_156TiAmjW1A_00_04_45_94__fvtts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0002_156TiAmjW1A_00_04_45_94__synthsees.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0002_156TiAmjW1A_00_04_45_94__ours_face.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0001_5hvVjOqk_4o_00_00_03_21__fvtts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/hard_0005_7B7wC7YNP-Y_00_00_00_00.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">Hey everybody, it&#x27;s me, Pavel here.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0005_7B7wC7YNP-Y_00_00_00_00__facetts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0005_7B7wC7YNP-Y_00_00_00_00__fvtts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0005_7B7wC7YNP-Y_00_00_00_00__synthsees.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0005_7B7wC7YNP-Y_00_00_00_00__ours_face.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/hard_0006_7B7wC7YNP-Y_00_00_11_60.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">Um, post, comment, com- post, comment.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0006_7B7wC7YNP-Y_00_00_11_60__facetts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0006_7B7wC7YNP-Y_00_00_11_60__fvtts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0006_7B7wC7YNP-Y_00_00_11_60__synthsees.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/hard_0006_7B7wC7YNP-Y_00_00_11_60__ours_face.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0001_5hvVjOqk_4o_00_00_03_21__synthsees.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0004_AlIcv4pz8OU_00_07_42_13.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">just go to outsourcingangel.com discovery or click the link in the description below to book a free.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0004_AlIcv4pz8OU_00_07_42_13__facetts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0004_AlIcv4pz8OU_00_07_42_13__fvtts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0004_AlIcv4pz8OU_00_07_42_13__synthsees.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/face/easy_0004_AlIcv4pz8OU_00_07_42_13__ours_face.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            </tbody>
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0001_5hvVjOqk_4o_00_00_03_21__ours_face.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0002_9pGlJfEQBw8_00_00_00_00.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">Welcome back to my channel. In today&#x27;s video,
+                    I&#x27;ll be touching on two traumas and core wounds that.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0002_9pGlJfEQBw8_00_00_00_00__facetts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0002_9pGlJfEQBw8_00_00_00_00__fvtts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0002_9pGlJfEQBw8_00_00_00_00__synthsees.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0002_9pGlJfEQBw8_00_00_00_00__ours_face.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0003_AEEDUcUNjzc_00_03_32_21.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">wrapping up things on my corporate job, post
+                    maternity leave, I quit. My dream life officially.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0003_AEEDUcUNjzc_00_03_32_21__facetts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0003_AEEDUcUNjzc_00_03_32_21__fvtts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0003_AEEDUcUNjzc_00_03_32_21__synthsees.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0003_AEEDUcUNjzc_00_03_32_21__ours_face.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/hard_0002_156TiAmjW1A_00_04_45_94.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">could say, we stan Harry Styles. That means we love
+                    him. We&#x27;re a fan of his. To bail.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0002_156TiAmjW1A_00_04_45_94__facetts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0002_156TiAmjW1A_00_04_45_94__fvtts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0002_156TiAmjW1A_00_04_45_94__synthsees.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0002_156TiAmjW1A_00_04_45_94__ours_face.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/hard_0005_7B7wC7YNP-Y_00_00_00_00.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">Hey everybody, it&#x27;s me, Pavel here.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0005_7B7wC7YNP-Y_00_00_00_00__facetts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0005_7B7wC7YNP-Y_00_00_00_00__fvtts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0005_7B7wC7YNP-Y_00_00_00_00__synthsees.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0005_7B7wC7YNP-Y_00_00_00_00__ours_face.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/hard_0006_7B7wC7YNP-Y_00_00_11_60.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">Um, post, comment, com- post, comment.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0006_7B7wC7YNP-Y_00_00_11_60__facetts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0006_7B7wC7YNP-Y_00_00_11_60__fvtts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0006_7B7wC7YNP-Y_00_00_11_60__synthsees.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/hard_0006_7B7wC7YNP-Y_00_00_11_60__ours_face.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0004_AlIcv4pz8OU_00_07_42_13.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">just go to outsourcingangel.com discovery or click
+                    the link in the description below to book a free.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0004_AlIcv4pz8OU_00_07_42_13__facetts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0004_AlIcv4pz8OU_00_07_42_13__fvtts.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0004_AlIcv4pz8OU_00_07_42_13__synthsees.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/face/easy_0004_AlIcv4pz8OU_00_07_42_13__ours_face.wav" autoplay="">Your
+                      browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -333,7 +387,8 @@
       <div class="hero-body">
         <div class="container">
           <h2 class="title is-3">2. Only Style</h2>
-          <p>Speech is generated from the style instruction and text content. The table keeps the same baseline columns and compares against our style-only model.</p>
+          <p>Speech is generated from the style instruction and text content. The table keeps the same baseline columns
+            and compares against our style-only model.</p>
           <div class="container table-container">
             <table class="table table-hover pt-2">
               <colgroup>
@@ -357,333 +412,388 @@
                 </tr>
               </thead>
               <tbody>
-            <tr>
-              <td style="text-align: left;vertical-align:middle">In a clearly happy tone, the female speaker speaks quickly yet gently, with light energy and an easy, buoyant warmth.</td>
-              <td style="text-align: left;vertical-align:middle">So just always have that mindset and if you guys find these videos helpful.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__controlspeech_promptstyle.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__promptttspp.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__parler_tts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__voxinstruct.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__ours_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                <tr>
+                  <td style="text-align: left;vertical-align:middle">In a clearly happy tone, the female speaker speaks
+                    quickly yet gently, with light energy and an easy, buoyant warmth.</td>
+                  <td style="text-align: left;vertical-align:middle">So just always have that mindset and if you guys
+                    find these videos helpful.</td>
 
-            <tr>
-              <td style="text-align: left;vertical-align:middle">With bright delight, the female speaker sounds exuberant and lively, using a high voice and sparkling energy throughout.</td>
-              <td style="text-align: left;vertical-align:middle">And if you&#x27;re anything like me, I think you&#x27;re gonna like this planner.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__controlspeech_promptstyle.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__promptttspp.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__parler_tts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__voxinstruct.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__ours_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__controlspeech_promptstyle.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: left;vertical-align:middle">With bright, unmistakable happiness, the male speaker sounds young and lively, speaking at a normal pace with high energy.</td>
-              <td style="text-align: left;vertical-align:middle">27% of my best days happen because I did something fun.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__controlspeech_promptstyle.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__promptttspp.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__parler_tts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__voxinstruct.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__ours_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: left;vertical-align:middle">This male speaker sounds warmly upbeat and distinctly joyful, speaking with lively adult confidence and an easy, infectious smile in the voice.</td>
-              <td style="text-align: left;vertical-align:middle">because that&#x27;s where the joy is.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__controlspeech_promptstyle.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__promptttspp.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__parler_tts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__voxinstruct.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__ours_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__promptttspp.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: left;vertical-align:middle">In a sharp, high-pitched tone, the female speaker sounds intensely angry, delivering the line with forceful adult conviction.</td>
-              <td style="text-align: left;vertical-align:middle">The supernatural manifestations of the glory of God. It&#x27;s time to believe him.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__controlspeech_promptstyle.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__promptttspp.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__parler_tts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__voxinstruct.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__ours_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: left;vertical-align:middle">With bright, infectious happiness, the female speaker delivers the line in an energetic adult voice at a natural pace.</td>
-              <td style="text-align: left;vertical-align:middle">Yeah, so I&#x27;ve got my Christmas jumper on.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__controlspeech_promptstyle.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__promptttspp.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__parler_tts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__voxinstruct.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__ours_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__parler_tts.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: left;vertical-align:middle">In a youthful, clearly sad tone, the female speaker speaks with steady pacing and calm, natural energy.</td>
-              <td style="text-align: left;vertical-align:middle">It is just doing the things that you don&#x27;t like.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__controlspeech_promptstyle.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__promptttspp.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__parler_tts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__voxinstruct.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__ours_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: left;vertical-align:middle">With bright, infectious happiness, the male speaker sounds young and lively, speaking at a normal pace with a high, energetic voice.</td>
-              <td style="text-align: left;vertical-align:middle">So to generate subtitles, I go to this app and from here you can generate subtitles automatically, that too for free.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__controlspeech_promptstyle.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__promptttspp.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__parler_tts.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__voxinstruct.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__ours_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            </tbody>
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__voxinstruct.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0010_iCwezQ8iv7g_00_10_18_72__ours_style.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: left;vertical-align:middle">With bright delight, the female speaker sounds
+                    exuberant and lively, using a high voice and sparkling energy throughout.</td>
+                  <td style="text-align: left;vertical-align:middle">And if you&#x27;re anything like me, I think
+                    you&#x27;re gonna like this planner.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__controlspeech_promptstyle.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__promptttspp.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__parler_tts.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__voxinstruct.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0011_nQXpw61FWz0_00_01_35_64__ours_style.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: left;vertical-align:middle">With bright, unmistakable happiness, the male
+                    speaker sounds young and lively, speaking at a normal pace with high energy.</td>
+                  <td style="text-align: left;vertical-align:middle">27% of my best days happen because I did something
+                    fun.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__controlspeech_promptstyle.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__promptttspp.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__parler_tts.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__voxinstruct.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0009_TA4-qQ5wEns_00_08_47_06__ours_style.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: left;vertical-align:middle">This male speaker sounds warmly upbeat and
+                    distinctly joyful, speaking with lively adult confidence and an easy, infectious smile in the voice.
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">because that&#x27;s where the joy is.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__controlspeech_promptstyle.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__promptttspp.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__parler_tts.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__voxinstruct.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/easy_0005_Cwgxm1TUfj8_00_07_28_75__ours_style.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: left;vertical-align:middle">In a sharp, high-pitched tone, the female speaker
+                    sounds intensely angry, delivering the line with forceful adult conviction.</td>
+                  <td style="text-align: left;vertical-align:middle">The supernatural manifestations of the glory of
+                    God. It&#x27;s time to believe him.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__controlspeech_promptstyle.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__promptttspp.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__parler_tts.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__voxinstruct.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0004_75ni3hjg0No_00_16_13_62__ours_style.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: left;vertical-align:middle">With bright, infectious happiness, the female
+                    speaker delivers the line in an energetic adult voice at a natural pace.</td>
+                  <td style="text-align: left;vertical-align:middle">Yeah, so I&#x27;ve got my Christmas jumper on.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__controlspeech_promptstyle.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__promptttspp.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__parler_tts.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__voxinstruct.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0007_JJaq-BRn5zY_00_19_57_63__ours_style.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: left;vertical-align:middle">In a youthful, clearly sad tone, the female speaker
+                    speaks with steady pacing and calm, natural energy.</td>
+                  <td style="text-align: left;vertical-align:middle">It is just doing the things that you don&#x27;t
+                    like.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__controlspeech_promptstyle.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__promptttspp.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__parler_tts.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__voxinstruct.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0009_lWqcHsjj-iA_00_07_15_72__ours_style.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: left;vertical-align:middle">With bright, infectious happiness, the male speaker
+                    sounds young and lively, speaking at a normal pace with a high, energetic voice.</td>
+                  <td style="text-align: left;vertical-align:middle">So to generate subtitles, I go to this app and from
+                    here you can generate subtitles automatically, that too for free.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__controlspeech_promptstyle.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__promptttspp.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__parler_tts.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__voxinstruct.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/style/hard_0010_m7EjdZ11Zrc_00_03_03_69__ours_style.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -694,7 +804,8 @@
       <div class="hero-body">
         <div class="container">
           <h2 class="title is-3">3. Face + Style</h2>
-          <p>Speech is generated from the face condition, style instruction, and text content. The table compares MMCS with our joint model.</p>
+          <p>Speech is generated from the face condition, style instruction, and text content. The table compares MMCS
+            with our joint model.</p>
           <div class="container table-container">
             <table class="table table-hover pt-2">
               <colgroup>
@@ -714,310 +825,359 @@
                 </tr>
               </thead>
               <tbody>
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0015_2--6XzUxGBI_00_22_19_92.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">With bright, youthful excitement, the female speaker sounds vividly happy and energetic, delivering the line with lively, upbeat warmth.</td>
-              <td style="text-align: left;vertical-align:middle">to start writing me and Leanne and Kath are so excited to get working on those for you but yes.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0015_2--6XzUxGBI_00_22_19_92__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0015_2--6XzUxGBI_00_22_19_92__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0015_2--6XzUxGBI_00_22_19_92.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">With bright, youthful excitement, the female
+                    speaker sounds vividly happy and energetic, delivering the line with lively, upbeat warmth.</td>
+                  <td style="text-align: left;vertical-align:middle">to start writing me and Leanne and Kath are so
+                    excited to get working on those for you but yes.</td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/hard_0012_spQHq9MOuSg_00_00_47_50.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">In a high, trembling tone, the male speaker sounds distinctly fearful, speaking with palpable anxiety and fragile, wavering intensity.</td>
-              <td style="text-align: left;vertical-align:middle">Some people think it&#x27;s a fantasy.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/hard_0012_spQHq9MOuSg_00_00_47_50__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/hard_0012_spQHq9MOuSg_00_00_47_50__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0015_2--6XzUxGBI_00_22_19_92__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/hard_0014_vsU2KWzy3So_00_05_43_67.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">In a low, sorrowful tone, the male speaker speaks with clear sadness and a heavy, subdued presence.</td>
-              <td style="text-align: left;vertical-align:middle">child doesn&#x27;t have to care for me for the final five years ten years of my.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/hard_0014_vsU2KWzy3So_00_05_43_67__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/hard_0014_vsU2KWzy3So_00_05_43_67__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/hard_0015_0GYbsp57dPI_00_02_02_84.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">In a clearly surprised tone, the female speaker speaks slowly with a high, bright voice and steady, natural energy.</td>
-              <td style="text-align: left;vertical-align:middle">you&#x27;re considering suicide.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/hard_0015_0GYbsp57dPI_00_02_02_84__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/hard_0015_0GYbsp57dPI_00_02_02_84__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0015_2--6XzUxGBI_00_22_19_92__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0012_0pcLMnknOZI_00_14_22_29.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">With bright, expressive happiness, the female speaker delivers the line in a lively adult manner, quickly paced yet gently calm.</td>
-              <td style="text-align: left;vertical-align:middle">So go check out the other videos, and I hope you guys got something out of this.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0012_0pcLMnknOZI_00_14_22_29__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0012_0pcLMnknOZI_00_14_22_29__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                </tr>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0020_7WIWpCH2l5I_00_02_46_79.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">A female speaker delivers the line with bright, youthful happiness, sounding warmly animated while keeping a natural pitch and steady pace.</td>
-              <td style="text-align: left;vertical-align:middle">I basically just sat around with my family.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0020_7WIWpCH2l5I_00_02_46_79__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0020_7WIWpCH2l5I_00_02_46_79__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0021_7r1Y2VnEqEM_00_05_08_60.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">With bright, unmistakable happiness, the female speaker speaks quickly in a lively, high-pitched voice full of cheerful energy.</td>
-              <td style="text-align: left;vertical-align:middle">I don&#x27;t know why last year, in 2024, I thought I could do three.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0021_7r1Y2VnEqEM_00_05_08_60__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0021_7r1Y2VnEqEM_00_05_08_60__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/hard_0012_spQHq9MOuSg_00_00_47_50.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">In a high, trembling tone, the male speaker sounds
+                    distinctly fearful, speaking with palpable anxiety and fragile, wavering intensity.</td>
+                  <td style="text-align: left;vertical-align:middle">Some people think it&#x27;s a fantasy.</td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0022_9VThZWBcAE4_00_13_47_44.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">In a bright, unmistakably happy tone, the female speaker speaks quickly with natural adult warmth and steady, balanced energy.</td>
-              <td style="text-align: left;vertical-align:middle">beneficial in your family? I&#x27;d love to hear from you. If you enjoyed this video, please hit that.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0022_9VThZWBcAE4_00_13_47_44__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0022_9VThZWBcAE4_00_13_47_44__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/hard_0012_spQHq9MOuSg_00_00_47_50__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0024_ARH_W-j0K0A_00_00_30_81.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">With bright enthusiasm, the male speaker delivers the line at a lively pace, sounding joyful, energetic, and distinctly adult.</td>
-              <td style="text-align: left;vertical-align:middle">My book is finally here, and to celebrate, I wanted to wait to do this video until the.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0024_ARH_W-j0K0A_00_00_30_81__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0024_ARH_W-j0K0A_00_00_30_81__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0025_Co982dS-_Rc_00_00_04_82.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">With bright, exuberant joy, the female speaker sounds lively and animated, speaking quickly in a naturally high, upbeat voice.</td>
-              <td style="text-align: left;vertical-align:middle">Yeah, I&#x27;m always picking the like emotional moving ones.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0025_Co982dS-_Rc_00_00_04_82__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0025_Co982dS-_Rc_00_00_04_82__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/hard_0012_spQHq9MOuSg_00_00_47_50__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0026_CsNE1T8xMr8_00_09_17_31.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">With bright, unmistakable happiness, the female speaker speaks quickly in a calm adult voice with natural pitch and gentle energy.</td>
-              <td style="text-align: left;vertical-align:middle">And we do like testing in our family.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0026_CsNE1T8xMr8_00_09_17_31__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0026_CsNE1T8xMr8_00_09_17_31__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
+                </tr>
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0265_yTUImIPHmls_00_05_58_55.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">A male speaker delivers the line with bright, exuberant warmth and lively momentum, sounding genuinely happy and energetically engaging.</td>
-              <td style="text-align: left;vertical-align:middle">It&#x27;s a fun thing that I like talking about it.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0265_yTUImIPHmls_00_05_58_55__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0265_yTUImIPHmls_00_05_58_55__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            
 
-            <tr>
-              <td style="text-align: center;vertical-align:middle">
-                <img class="cropped" src="assets/faces/easy_0088_5KaIQFxr9c8_00_02_56_41.jpg" alt="Face condition">
-              </td>
-              <td style="text-align: left;vertical-align:middle">This male speaker has an older, low-pitched voice, speaking with steady warmth and calm, seasoned assurance.</td>
-              <td style="text-align: left;vertical-align:middle">So my wife would share, and then I had to repeat back exactly what she said.</td>
-              
-    <td class="" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0088_5KaIQFxr9c8_00_02_56_41__icme_face_style.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-              
-    <td class="ours-cell" style="text-align: center;vertical-align:middle">
-      <audio controls="controls">
-        <source src="assets/audio/joint/easy_0088_5KaIQFxr9c8_00_02_56_41__ours_jcsro.wav" autoplay="">Your browser does not support the audio element.
-      </audio>
-    </td>
-    
-            </tr>
-            </tbody>
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/hard_0014_vsU2KWzy3So_00_05_43_67.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">In a low, sorrowful tone, the male speaker speaks
+                    with clear sadness and a heavy, subdued presence.</td>
+                  <td style="text-align: left;vertical-align:middle">child doesn&#x27;t have to care for me for the
+                    final five years ten years of my.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/hard_0014_vsU2KWzy3So_00_05_43_67__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/hard_0014_vsU2KWzy3So_00_05_43_67__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/hard_0015_0GYbsp57dPI_00_02_02_84.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">In a clearly surprised tone, the female speaker
+                    speaks slowly with a high, bright voice and steady, natural energy.</td>
+                  <td style="text-align: left;vertical-align:middle">you&#x27;re considering suicide.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/hard_0015_0GYbsp57dPI_00_02_02_84__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/hard_0015_0GYbsp57dPI_00_02_02_84__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0012_0pcLMnknOZI_00_14_22_29.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">With bright, expressive happiness, the female
+                    speaker delivers the line in a lively adult manner, quickly paced yet gently calm.</td>
+                  <td style="text-align: left;vertical-align:middle">So go check out the other videos, and I hope you
+                    guys got something out of this.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0012_0pcLMnknOZI_00_14_22_29__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0012_0pcLMnknOZI_00_14_22_29__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0020_7WIWpCH2l5I_00_02_46_79.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">A female speaker delivers the line with bright,
+                    youthful happiness, sounding warmly animated while keeping a natural pitch and steady pace.</td>
+                  <td style="text-align: left;vertical-align:middle">I basically just sat around with my family.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0020_7WIWpCH2l5I_00_02_46_79__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0020_7WIWpCH2l5I_00_02_46_79__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0021_7r1Y2VnEqEM_00_05_08_60.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">With bright, unmistakable happiness, the female
+                    speaker speaks quickly in a lively, high-pitched voice full of cheerful energy.</td>
+                  <td style="text-align: left;vertical-align:middle">I don&#x27;t know why last year, in 2024, I thought
+                    I could do three.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0021_7r1Y2VnEqEM_00_05_08_60__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0021_7r1Y2VnEqEM_00_05_08_60__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0022_9VThZWBcAE4_00_13_47_44.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">In a bright, unmistakably happy tone, the female
+                    speaker speaks quickly with natural adult warmth and steady, balanced energy.</td>
+                  <td style="text-align: left;vertical-align:middle">beneficial in your family? I&#x27;d love to hear
+                    from you. If you enjoyed this video, please hit that.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0022_9VThZWBcAE4_00_13_47_44__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0022_9VThZWBcAE4_00_13_47_44__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0024_ARH_W-j0K0A_00_00_30_81.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">With bright enthusiasm, the male speaker delivers
+                    the line at a lively pace, sounding joyful, energetic, and distinctly adult.</td>
+                  <td style="text-align: left;vertical-align:middle">My book is finally here, and to celebrate, I wanted
+                    to wait to do this video until the.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0024_ARH_W-j0K0A_00_00_30_81__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0024_ARH_W-j0K0A_00_00_30_81__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0025_Co982dS-_Rc_00_00_04_82.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">With bright, exuberant joy, the female speaker
+                    sounds lively and animated, speaking quickly in a naturally high, upbeat voice.</td>
+                  <td style="text-align: left;vertical-align:middle">Yeah, I&#x27;m always picking the like emotional
+                    moving ones.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0025_Co982dS-_Rc_00_00_04_82__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0025_Co982dS-_Rc_00_00_04_82__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0026_CsNE1T8xMr8_00_09_17_31.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">With bright, unmistakable happiness, the female
+                    speaker speaks quickly in a calm adult voice with natural pitch and gentle energy.</td>
+                  <td style="text-align: left;vertical-align:middle">And we do like testing in our family.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0026_CsNE1T8xMr8_00_09_17_31__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0026_CsNE1T8xMr8_00_09_17_31__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0265_yTUImIPHmls_00_05_58_55.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">A male speaker delivers the line with bright,
+                    exuberant warmth and lively momentum, sounding genuinely happy and energetically engaging.</td>
+                  <td style="text-align: left;vertical-align:middle">It&#x27;s a fun thing that I like talking about it.
+                  </td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0265_yTUImIPHmls_00_05_58_55__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0265_yTUImIPHmls_00_05_58_55__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+
+
+                <tr>
+                  <td style="text-align: center;vertical-align:middle">
+                    <img class="cropped" src="assets/faces/easy_0088_5KaIQFxr9c8_00_02_56_41.jpg" alt="Face condition">
+                  </td>
+                  <td style="text-align: left;vertical-align:middle">This male speaker has an older, low-pitched voice,
+                    speaking with steady warmth and calm, seasoned assurance.</td>
+                  <td style="text-align: left;vertical-align:middle">So my wife would share, and then I had to repeat
+                    back exactly what she said.</td>
+
+                  <td class="" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0088_5KaIQFxr9c8_00_02_56_41__icme_face_style.wav"
+                        autoplay="">Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+
+                  <td class="ours-cell" style="text-align: center;vertical-align:middle">
+                    <audio controls="controls">
+                      <source src="assets/audio/joint/easy_0088_5KaIQFxr9c8_00_02_56_41__ours_jcsro.wav" autoplay="">
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
       </div>
     </section>
-    
+
   </main>
 </body>
+
 </html>
